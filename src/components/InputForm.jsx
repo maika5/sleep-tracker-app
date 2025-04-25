@@ -8,20 +8,36 @@ const App = {
 };
 
 
-//寝る時間
+//「寝る時間」「起きた時間」の入力フォーム
 export const InputForm = (props) => {
-  console.log("SleepForm がレンダリングされた！");
-  const { sleepText, onChange, onClick, disabled } = props;
-return (
-  <div>
-    <input
-    value={sleepText}
-    disabled={disabled}
-    placeholder="寝る時間を入力"
-    onChange={onChange}
-    />
 
-    <button disabled={disabled} onClick={onClick}>追加</button>
+// このPropsは、親(Sleep.jsx)から渡される値を受け取っている
+  const { sleeptime, waketime, onChange, onwakeChange, onClick, disabled } = props;
+
+return (
+
+  <div>
+      <div>
+        <label>寝る時間：</label>
+        <input
+          type="time" //スマホでのUIが最適化される
+          value={sleeptime}
+          disabled={disabled}
+          onChange={onChange}
+        />
+      </div>
+
+      <div>
+        <label>起きた時間：</label>
+          <input
+          type="time"
+          value={waketime}
+          disabled={disabled}
+          onChange={onwakeChange}
+        />
+      </div>
+
+      <button disabled={disabled} onClick={onClick}>追加</button>
     </div>
 );
 };
